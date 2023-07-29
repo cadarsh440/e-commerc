@@ -1,16 +1,17 @@
+// Import the Mongoose module
 const mongoose = require('mongoose');
-
-// connecting mongoose to its default server and ecommerceDB
-mongoose.connect('mongodb+srv://soumyasri2245:Soumya22%4034@cluster0.u2ywt3o.mongodb.net/?retryWrites=true&w=majority', {
-    useNewUrlParser: true
-});
-
+// Connect to the MongoDB database
+mongoose.connect(process.env.MONGODB_ATLAS_URI,{useNewUrlParser: true,
+    useUnifiedTopology: true});
+// Get the default connection
 const db = mongoose.connection;
-
-db.on('error', console.error.bind(console, "Error connecting to MongoDB"));
-
-db.once('open', function(){
-    console.log('Connected to Database :: MongoDB');
+// Handle connection error
+db.on('error', console.error.bind(console, 'Error in connecting to MongoDB'));
+// Once the connection is open, log a success message
+db.once('open', () => {
+    console.log('MongoDB is connected');
 });
-
+// Enable debug logging in Mongoose
+mongoose.set('debug', true);
+// Export the database connection
 module.exports = db;
