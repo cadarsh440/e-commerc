@@ -36,5 +36,4 @@ STEPS TO UPDATE THE QUANTITY OF A PRODUCT:
 5) Make a POST request and you should get a message containing the update product
 
 
-# TECHSTACK
-Node.Js, MongoDB
+
